@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" packagerversion="1.4.7" version="2.0" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+
+ <name>bcompiler</name>
+ <channel>pecl.php.net</channel>
+ <summary>A bytecode compiler</summary>
+ <description>bcompiler enables you to encode your scripts in phpbytecode, enabling you to protect the source code. 
+bcompiler could be used in the following situations
+  
+- to create a exe file of a PHP-GTK application (in conjunction with other software)
+- to create closed source libraries
+- to provide clients with time expired software (prior to payment)
+- to deliver close source applications
+- for use on embedded systems, where disk space is a priority.
+
+For install instructions see the manual at pear.php.net  
+  
+ </description>
+<lead>
+  <name>val khokhlov</name>
+  <user>val</user>
+  <email>val@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Alan Knowles</name>
+  <user>alan_k</user>
+  <email>alan@akbkhome.com</email>
+  <active>yes</active>
+ </lead>
+ 
+
+ <date>2011-06-08</date>
+ 
+ <version>
+  <release>1.0.2</release>
+  <api>1.0.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+
+ <license uri="http://www.php.net/license">PHP</license>
+ <notes>
+Finally a stable release - Many thanks for Val for looking after the package.
+
+- release with correct version number in source.
+
+ </notes>
+
+ <contents>
+  <dir name="/">
+   <dir name="examples">
+    <dir name="embed">
+     <file baseinstalldir="/" name="Makefile" role="src" />
+     <file baseinstalldir="/" name="Makefile.win" role="src" />
+     <file baseinstalldir="/" name="phpe.c" role="src" />
+    </dir> <!-- //examples/embed -->
+    <file baseinstalldir="/" name="bcompiler.php" role="doc" />
+    <file baseinstalldir="/" name="bcompiler_compile.php" role="doc" />
+    <file baseinstalldir="/" name="bcompiler_parse.php" role="doc" />
+    <file baseinstalldir="/" name="bcompiler_read.php" role="doc" />
+   </dir> <!-- //examples -->
+   <dir name="tests">
+    <file role="test" name="a10-include.phpt" />
+    <file role="test" name="a11-include_empty.phpt" />
+    <file role="test" name="a12-include_bc.phpt" />
+    <file role="test" name="a13-include_gz.phpt" />
+    <file role="test" name="a14-include_bz2.phpt" />
+    <file role="test" name="a15-included_files.phpt" />
+    <file role="test" name="a20-basic.phpt" />
+    <file role="test" name="a21-const.phpt" />
+    <file role="test" name="a22-vars.phpt" />
+    <file role="test" name="a22-vars_php6.phpt" />
+    <file role="test" name="a23-func.phpt" />
+    <file role="test" name="a24-php6_encoding.phps" />
+    <file role="test" name="a24-php6_encoding.phpt" />
+    <file role="test" name="a25-goto.phpt" />
+    <file role="test" name="a26-brk_cont.phpt" />
+    <file role="test" name="a29-exceptions.phpt" />
+    <file role="test" name="a30-class.phpt" />
+    <file role="test" name="a31-class_extends.phpt" />
+    <file role="test" name="a32-class_Base.phps" />
+    <file role="test" name="a32-class_extends.phpt" />
+    <file role="test" name="a33-class_const.phpt" />
+    <file role="test" name="a34-constructor.phpt" />
+    <file role="test" name="a35-class_static.phpt" />
+    <file role="test" name="a36-abstract.phpt" />
+    <file role="test" name="a37-overloading.phpt" />
+    <file role="test" name="a38-iteration.phpt" />
+    <file role="test" name="a39-typehint.phpt" />
+    <file role="test" name="a40-late_binding.phpt" />
+    <file role="test" name="a41-ext_internal.phpt" />
+    <file role="test" name="a42-ezctestcase.php" />
+    <file role="test" name="a42-parent-errors-with-a-really-long-filename-that-causes-issues-and-things.phpt" />
+    <file role="test" name="a50-class.phps" />
+    <file role="test" name="a50-class_scope.phpt" />
+    <file role="test" name="a51-class_protvar.phpt" />
+    <file role="test" name="a52-class_privvar.phpt" />
+    <file role="test" name="a53-class_protfunc.phpt" />
+    <file role="test" name="a54-class_privfunc.phpt" />
+    <file role="test" name="a55-class_privfunc.phpt" />
+    <file role="test" name="a56-class_privvar.phpt" />
+    <file role="test" name="a57-inherit-array-object.phpt" />
+    <file role="test" name="a58-reflection-file.phpt" />
+    <file role="test" name="a59-reflection-docblocks.phpt" />
+    <file role="test" name="a60-namespace.phpt" />
+    <file role="test" name="a61-subnamespace.phpt" />
+    <file role="test" name="a62-use.phpt" />
+    <file role="test" name="bug-16978.phpt" />
+    <file role="test" name="bug-17043.phpt" />
+    <file role="test" name="bug-5693.phpt" />
+    <file role="test" name="filename_handler.phpt" />
+    <file role="test" name="test-helper.php" />
+   </dir> <!-- //tests -->
+   <file name="php_bcompiler.h" role="src" />
+   <file name="php_bcompiler.c" role="src" />
+   <file name="bcompiler.c" role="src" />
+   <file name="bcompiler_debug.c" role="src" />
+   <file name="bcompiler_zend.c" role="src" />
+   <file name="config.m4" role="src" />
+   <file name="config.w32" role="src" />
+   <file name="bcompiler.dsp" role="src" />
+   <file name="CREDITS" role="doc" />
+   <file name="EXPERIMENTAL" role="doc" />
+  </dir> <!-- / -->
+ </contents>
+
+ <dependencies>
+  <required>
+   <php>
+    <min>4.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+
+ <providesextension>bcompiler</providesextension>
+ <extsrcrelease />
+
+ <changelog>
+
+  <release>
+
+ <date>2011-06-08</date>
+ 
+ <version>
+  <release>1.0.1</release>
+  <api>1.0.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+
+ <license uri="http://www.php.net/license">PHP</license>
+ <notes>
+Finally a stable release - Many thanks for Val for looking after the package.
+
+- oops - fix build failure.. 
+
+ </notes>
+  </release>
+
+  <release>
+
+
+ <date>2011-06-08</date>
+ 
+ <version>
+  <release>1.0.0</release>
+  <api>1.0.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+
+ <license uri="http://www.php.net/license">PHP</license>
+ <notes>
+Finally a stable release - Many thanks for Val for looking after the package.
+
+- sources split to several files
+- bcompiler.debug and bcompiler.debugfile ini entries to control debugging
+- interfaces are serialized
+- reflection info is serialized
+- try to detect __FILE__ and __DIR__, bcompiler.detect_filedir=0 turns it off
+- bug with not looking for gz/bz2 compressed sources in include_path fixed
+- bug with handling classes when classname+filename > 127 bytes fixed
+- bcompiled files are properly displayed in get_included_files()
+- support for new superglobals
+- fix segfault in bc_serialize_Filedir
+
+ </notes>
+
+
+  </release>
+
+  <release>
+   <date>2010-11-23</date>
+   <time>21:50:00</time>
+   <version>
+    <release>0.9.5</release>
+    <api>0.9.5</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+  - sources split to several files
+  - bcompiler.debug and bcompiler.debugfile ini entries to control debugging
+  - interfaces are serialized
+  - reflection info is serialized
+  - try to detect __FILE__ and __DIR__, bcompiler.detect_filedir=0 turns it off
+  - bug with not looking for gz/bz2 compressed sources in include_path fixed
+  - bug with handling classes when classname+filename > 127 bytes fixed
+  - bcompiled files are properly displayed in get_included_files()
+   </notes>
+
+  </release>
+
+
+
+
+  <release>
+   <version>
+    <release>0.9.3</release>
+    <api>0.9.3</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2010-02-06</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+- critical bugs fixed
+   </notes>
+  </release>
+
+  <release>
+   <version>
+    <release>0.9.2</release>
+    <api>0.9.2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2009-12-30</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+- bcompiler_set_filename_handler() to change filename written into the bytecode
+- test suite
+- bugfixes
+   </notes>
+  </release>
+
+  <release>
+   <version>
+    <release>0.9.1</release>
+    <api>0.9.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2009-11-29</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+- PHP 5.3 and 6.0-dev support
+- bugfixes
+   </notes>
+  </release>
+
+  <release>
+   <version>
+    <release>0.8</release>
+    <api>0.8</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2006-10-04</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+- bugfix release
+- preliminary PHP6 support
+   </notes>
+  </release>
+
+  <release>
+   <version>
+    <release>0.7</release>
+    <api>0.7</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2005-07-28</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+- APC-bcompiler interaction (so, you can use both at the same time)
+- many bugs were fixed
+- some code clean-up
+   </notes>
+  </release>
+
+  <release>
+   <version>
+    <release>0.6</release>
+    <api>0.6</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2005-02-15</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+- added bcompiler_write_file() function to compile entire .php script
+- added support for gzip compressed bytecodes and auto-detect of the bz2 and zlib extensions
+- Zend Engine 2 and 2.1 support (for PHP versions 5.0.x and 5.1.x)
+- bug with incorrect handling include_once() and require_once() fixed
+- many memory leaks fixed
+- added support for stand-alone executables creating
+   </notes>
+  </release>
+
+  <release>
+   <version>
+    <release>0.5</release>
+    <api>0.5</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2003-06-06</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+- Added Functional Compiling (Valentin Solop)
+- Added Included file list - alpha
+- Lots of Windows Build fixes (Ernani Joppert Pontes Martins)
+- short tags and thread safety fixes (Edin Kadribasic)
+- bug #23981 &amp; #23852 fixed some bz2 checking (per at nobolt dot com)
+   </notes>
+  </release>
+
+  <release>
+   <version>
+    <release>0.4</release>
+    <api>0.4</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2002-09-07</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+- It actually works now! (decompiler fixed so it doesnt segfault)
+- Added compiler script to convert groups of php files/classes to bytecodes
+- Lots of Windows Build fixes, hopefully a windows version will be available soon.
+   </notes>
+  </release>
+
+  <release>
+   <version>
+    <release>0.3</release>
+    <api>0.3</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2002-07-23</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+First Release in PECL
+   </notes>
+  </release>
+
+ </changelog>
+</package>
+<!--
+vim:et:ts=1:sw=1
+-->
