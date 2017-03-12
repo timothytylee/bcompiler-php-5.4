@@ -306,6 +306,7 @@ zend_op_array* bcompiler_read(TSRMLS_D) {
 	zend_op_array *op_array = NULL;
 	char *key = NULL;
 	int key_len;
+    int i;
 
 	BCOMPILERG(parsing_error) = 0;	
 
@@ -361,6 +362,12 @@ zend_op_array* bcompiler_read(TSRMLS_D) {
 					zend_hash_destroy(&zc->function_table);
 #ifndef ZEND_ENGINE_2_4 /* todo */
 					zend_hash_destroy(&zc->default_properties);
+#else
+                    if (zc->default_properties_count) {
+                        for (i = 0; i < zc->default_properties_count; i++)
+                            zval_ptr_dtor(&zc->default_properties_table[i]);
+                        efree(zc->default_properties_table);
+                    }
 #endif
 					php_error(E_ERROR, "bcompiler: Read Past End of File");
 				}

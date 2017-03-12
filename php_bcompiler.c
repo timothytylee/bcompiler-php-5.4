@@ -572,7 +572,7 @@ PHP_FUNCTION(bcompiler_write_file)
 #ifndef ZEND_ENGINE_2
 			if (i > n_old_class)
 #else
-			if (zc->filename && strcmp(zc->filename, real_path) == 0)
+			if (ZCE_FILENAME(zc) && strcmp(ZCE_FILENAME(zc), real_path) == 0)
 #endif
 			{
 				SERIALIZE_SCALAR(BCOMPILER_CLASS_ENTRY, char)
@@ -633,7 +633,7 @@ PHP_FUNCTION(bcompiler_write_file)
 #ifndef ZEND_ENGINE_2
 			if (i > n_old_class)
 #else
-			if (zc->filename && strcmp(zc->filename, real_path) == 0)
+			if (ZCE_FILENAME(zc) && strcmp(ZCE_FILENAME(zc), real_path) == 0)
 #endif
 			{
 #if PHP_MAJOR_VERSION >= 6

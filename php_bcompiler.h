@@ -281,6 +281,23 @@ enum {
 }
 #define LOAD_BYTES(bytes, n)   LOAD_BYTES_X(bytes, n, return)
 #define LOAD_BYTES_V(bytes, n, v) LOAD_BYTES_X(bytes, n, return v)
+	
+/* Structure member accessors */
+#ifdef ZEND_ENGINE_2_4
+#  define ZCE_FILENAME(zce)             (zce)->info.user.filename
+#  define ZCE_LINE_START(zce)           (zce)->info.user.line_start
+#  define ZCE_LINE_END(zce)             (zce)->info.user.line_end
+#  define ZCE_DOC_COMMENT(zce)          (zce)->info.user.doc_comment
+#  define ZCE_DOC_COMMENT_LEN(zce)      (zce)->info.user.doc_comment_len
+#  define ZCE_BUILTIN_FUNCTIONS(zce)    (zce)->info.internal.builtin_functions
+#else
+#  define ZCE_FILENAME(zce)             (zce)->filename
+#  define ZCE_LINE_START(zce)           (zce)->line_start
+#  define ZCE_LINE_END(zce)             (zce)->line_end
+#  define ZCE_DOC_COMMENT(zce)          (zce)->doc_comment
+#  define ZCE_DOC_COMMENT_LEN(zce)      (zce)->doc_comment_len
+#  define ZCE_BUILTIN_FUNCTIONS(zce)    (zce)->builtin_functions
+#endif
 
 /* Function prototypes and globals */
 
