@@ -101,6 +101,9 @@ ZEND_BEGIN_MODULE_GLOBALS(bcompiler)
 #endif
 	int detect_filedir;         /* try to detect __FILE__ and __DIR__ (default: true) */
 	zend_op_array *zoa;         /* current zend_op_array */
+#ifdef ZEND_ENGINE_2
+    dtor_func_t properties_info_destructor;
+#endif
 ZEND_END_MODULE_GLOBALS(bcompiler)
 
 /* we use globals */

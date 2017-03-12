@@ -1005,10 +1005,10 @@ void apc_serialize_zend_class_entry(zend_class_entry* zce , char* force_parent_n
 }
 
 #ifdef ZEND_ENGINE_2
-static void zend_destroy_property_info(zend_property_info *property_info)
+/*static void zend_destroy_property_info(zend_property_info *property_info)
 {
     efree(ZS2S(property_info->name));
-}
+}*/
 #endif
 
 #ifndef ZEND_ENGINE_2
@@ -1125,7 +1125,8 @@ void apc_deserialize_zend_class_entry(zend_class_entry* zce, char **key, int *ke
 		(void*) apc_free_zend_property_info,
 		(int) sizeof(zend_property_info) , 
 		(char) exists TSRMLS_CC);
-	zce->properties_info.pDestructor = (dtor_func_t)&zend_destroy_property_info;
+	//zce->properties_info.pDestructor = (dtor_func_t)&zend_destroy_property_info;
+	zce->properties_info.pDestructor = BCOMPILERG(properties_info_destructor);
 	BCOMPILERG(cur_zc) = NULL; 
 	
 # ifndef ZEND_ENGINE_2_4 /* todo */

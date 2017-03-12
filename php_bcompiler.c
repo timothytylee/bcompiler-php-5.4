@@ -166,6 +166,7 @@ static void php_bcompiler_init_globals(zend_bcompiler_globals *bcompiler_globals
 	HashTable ht;
 	zend_hash_init(&ht, 0, NULL, (dtor_func_t)&zend_destroy_property_info, 0);
 	zend_hash_destroy(&ht);
+	bcompiler_globals->properties_info_destructor = &zend_destroy_property_info;
 #endif
 	
 	bcompiler_globals->stream = NULL;
