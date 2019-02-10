@@ -152,8 +152,9 @@ PHP_INI_END()
 /* }}} */
 
 #ifdef ZEND_ENGINE_2
-static void zend_destroy_property_info(zend_property_info *property_info)
+static void zend_destroy_property_info(void *v)
 {
+    zend_property_info *property_info = (zend_property_info *)v;
     efree(ZS2S(property_info->name));
 }
 #endif

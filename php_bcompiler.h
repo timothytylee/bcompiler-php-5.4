@@ -309,20 +309,20 @@ extern zend_op_array *(*bcompiler_saved_zend_compile_file)(zend_file_handle *fil
 inline void bcompiler_set_stdsize(int ver, const size_t **stdsize);
 int bcompiler_can_read(int ver);
 char *bcompiler_bc_version(int ver);
-php_stream *bz2_aware_stream_open(char *file_name, int use_bz, char **opened_path TSRMLS_DC);
+php_stream *bz2_aware_stream_open(const char *file_name, int use_bz, char **opened_path TSRMLS_DC);
 zend_op_array *bcompiler_compile_file(zend_file_handle *file_handle, int type TSRMLS_DC);
 zend_op_array *bcompiler_read(TSRMLS_D);
 zend_op_array *dummy_op_array(TSRMLS_D);
-char *bcompiler_handle_filename(char *filename TSRMLS_DC);
-void apc_serialize_string(char* string TSRMLS_DC);
-void apc_serialize_zstring(char* string, int len TSRMLS_DC);
+char *bcompiler_handle_filename(const char *filename TSRMLS_DC);
+void apc_serialize_string(const char* string TSRMLS_DC);
+void apc_serialize_zstring(const char* string, int len TSRMLS_DC);
 int apc_create_string(char** string TSRMLS_DC);
 int apc_create_string_u(char** string, int unicode TSRMLS_DC);
 void serialize_magic(int ver TSRMLS_DC);
 int deserialize_magic(TSRMLS_D);
 
 /* bcompiler_zend.c */
-void apc_serialize_zend_class_entry(zend_class_entry* zce , char* force_parent_name, int force_parent_len, char* force_key, int force_key_len TSRMLS_DC);
+void apc_serialize_zend_class_entry(zend_class_entry* zce , const char* force_parent_name, int force_parent_len, const char* force_key, int force_key_len TSRMLS_DC);
 void apc_serialize_zend_function(zend_function* zf TSRMLS_DC);
 void apc_serialize_zend_constant(zend_constant* zc TSRMLS_DC);
 void apc_serialize_zend_op_array(zend_op_array* zoa TSRMLS_DC);

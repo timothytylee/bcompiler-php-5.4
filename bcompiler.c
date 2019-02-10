@@ -66,7 +66,7 @@ char *bcompiler_bc_version(int ver) {
 
 /* --- I/O functions ------------------------------------------------------- */
 
-static int is_valid_file_name(char *filename)
+static int is_valid_file_name(const char *filename)
 {
 	int len = strlen(filename);
 
@@ -91,7 +91,7 @@ static inline int has_bzip2_stream_support(TSRMLS_D)
 	return php_stream_locate_url_wrapper("compress.bzip2://", NULL, STREAM_LOCATE_WRAPPERS_ONLY TSRMLS_CC) != NULL;
 }
 
-php_stream *bz2_aware_stream_open(char *file_name, int use_bz, char **opened_path TSRMLS_DC)
+php_stream *bz2_aware_stream_open(const char *file_name, int use_bz, char **opened_path TSRMLS_DC)
 {
 	php_stream *stream;
 	char *path_to_open;
@@ -105,7 +105,7 @@ php_stream *bz2_aware_stream_open(char *file_name, int use_bz, char **opened_pat
 	EG(error_reporting) = old_error_reporting;
 
 	/* try to read magic */
-	stream = php_stream_open_wrapper(file_name, "rb", ENFORCE_SAFE_MODE|USE_PATH|IGNORE_URL_WIN|STREAM_OPEN_FOR_INCLUDE, opened_path);
+	stream = php_stream_open_wrapper((char*)file_name, "rb", ENFORCE_SAFE_MODE|USE_PATH|IGNORE_URL_WIN|STREAM_OPEN_FOR_INCLUDE, opened_path);
 	if (!stream) {
 		BCOMPILER_DEBUG(("error opening file '%s'..\n", file_name));
 		return stream;
@@ -196,7 +196,7 @@ zend_op_array *bcompiler_compile_file(zend_file_handle *file_handle, int type TS
 	int test = -1;
 	php_stream *stream = NULL;
 	zend_op_array *op_array = NULL;
-	char *filename = NULL;
+	const char *filename = NULL;
 	 
 	if (!BCOMPILERG(enabled)) {
 		BCOMPILER_DEBUGFULL(("bcompiler disabled - passing through\n"));
@@ -477,7 +477,7 @@ zend_op_array* bcompiler_read(TSRMLS_D) {
 /* --- filename_handler ---------------------------------------------------- */
 
 /* {{{ bcompiler_handle_filename - handle filename.*/
-char *bcompiler_handle_filename(char *filename TSRMLS_DC) {
+char *bcompiler_handle_filename(const char *filename TSRMLS_DC) {
 	zval *params[1];
 	zval *retval = NULL;
 	char *name;
@@ -509,7 +509,7 @@ char *bcompiler_handle_filename(char *filename TSRMLS_DC) {
 
 /* --- string functions ---------------------------------------------------- */
 
-void apc_serialize_string(char* string TSRMLS_DC)
+void apc_serialize_string(const char* string TSRMLS_DC)
 {
 	int len;
 
@@ -533,7 +533,7 @@ void apc_serialize_string(char* string TSRMLS_DC)
 	STORE_BYTES(string, len);
 }
 
-void apc_serialize_zstring(char* string, int len TSRMLS_DC)
+void apc_serialize_zstring(const char* string, int len TSRMLS_DC)
 {
 	/* by convention, mark null strings with a length of -1 */
 	if (string == NULL) {

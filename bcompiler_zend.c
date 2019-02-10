@@ -856,7 +856,7 @@ void apc_deserialize_zend_overloaded_element(zend_overloaded_element* zoe TSRMLS
 
 /* --- zend_class_entry ---------------------------------------------------- */
 	
-void apc_serialize_zend_class_entry(zend_class_entry* zce , char* force_parent_name, int force_parent_len, char* force_key, int force_key_len TSRMLS_DC)
+void apc_serialize_zend_class_entry(zend_class_entry* zce , const char* force_parent_name, int force_parent_len, const char* force_key, int force_key_len TSRMLS_DC)
 {
 	zend_function_entry* zfe;
 	int count, i;
